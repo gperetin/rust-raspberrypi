@@ -11,7 +11,11 @@ ifeq ($(BSP),rpi3)
     KERNEL_BIN        = kernel8.img
     QEMU_BINARY       = qemu-system-aarch64
     QEMU_MACHINE_TYPE = raspi3
-    QEMU_RELEASE_ARGS = -d in_asm -display none
+	# To run qemu in assembly mode
+	# docs here https://www.qemu.org/docs/master/system/invocation.html#hxtool-3
+    # QEMU_RELEASE_ARGS = -d in_asm -display none
+	# -serial redirects the virtual serial port to host character device (here stdio)
+    QEMU_RELEASE_ARGS = -serial stdio -display none
     LINKER_FILE       = src/bsp/raspberrypi/link.ld
     RUSTC_MISC_ARGS   = -C target-cpu=cortex-a53
 else ifeq ($(BSP),rpi4)
@@ -19,7 +23,10 @@ else ifeq ($(BSP),rpi4)
     KERNEL_BIN        = kernel8.img
     QEMU_BINARY       = qemu-system-aarch64
     QEMU_MACHINE_TYPE =
-    QEMU_RELEASE_ARGS = -d in_asm -display none
+	# To run qemu in assembly mode
+	# docs here https://www.qemu.org/docs/master/system/invocation.html#hxtool-3
+    # QEMU_RELEASE_ARGS = -d in_asm -display none
+    QEMU_RELEASE_ARGS = -serial stdio -display none
     LINKER_FILE       = src/bsp/raspberrypi/link.ld
     RUSTC_MISC_ARGS   = -C target-cpu=cortex-a72
 endif
