@@ -5,7 +5,7 @@ def Settings( **kwargs ):
             'rust': {
                 'features': ['http2','spnego'],
                 'all_targets': False,
-                'wait_to_build': 1500,
+                'build_on_save': True,
             }
         }
     }

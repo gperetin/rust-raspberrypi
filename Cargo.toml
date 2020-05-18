@@ -8,7 +8,8 @@ edition = "2018"
 
 [features]
 default = []
-bsp_rpi3 = []
-bsp_rpi4 = []
+bsp_rpi3 = ["cortex-a"]
+bsp_rpi4 = ["cortex-a"]
 
 [dependencies]
+cortex-a = {version = "3.0.x", optional = true}

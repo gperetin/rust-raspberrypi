@@ -1,10 +1,8 @@
-// This is so we can use the llvm_asm marco in cpu.rs
-
 //! Some docs here
 
+// Attributes
 #![feature(format_args_nl)]
-#![feature(global_asm)]
-#![feature(llvm_asm)]
+#![feature(naked_functions)]
 #![feature(panic_info_message)]
 #![no_main]
 #![no_std]
@@ -18,6 +16,7 @@ mod print;
 mod runtime_init;
 
 unsafe fn kernel_init() -> ! {
-    println!("[0] Hello from Rust!");
-    panic!("Stopping here!")
+    println!("[0] Hello from pure Rust!");
+    println!("[1] Stopping here");
+    cpu::wait_forever()
 }
