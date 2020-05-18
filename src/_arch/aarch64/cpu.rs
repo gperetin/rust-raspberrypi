@@ -26,6 +26,18 @@ pub unsafe extern "C" fn _start() -> ! {
     }
 }
 
+// Re-exporting
+pub use asm::nop;
+
+/// Spin for `n` cycles
+#[inline(always)]
+pub fn spin_for_cycles(n: usize) {
+    for _ in 0..n {
+        asm::nop();
+    }
+}
+
+
 /// Pause execution on the core.
 // This function is called by the panic handler, we could have just as easily
 // defined this as a noop handler, by having just `loop {}` in the method body
